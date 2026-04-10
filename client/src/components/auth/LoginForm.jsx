@@ -30,9 +30,18 @@ const LoginForm = () => {
     }
   };
 
-  const handleGoogleLogin = () => {
-    const apiUrl = import.meta.env.VITE_API_URL || '/api';
-    window.location.href = `${apiUrl}/auth/google`;
+  const handleGoogleLogin = async () => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || '/api';
+      const res = await fetch(`${apiUrl}/health`);
+      if (res.ok) {
+        window.location.href = `${apiUrl}/auth/google`;
+      } else {
+        toast.error('Server is not available');
+      }
+    } catch {
+      toast.error('Cannot connect to server');
+    }
   };
 
   return (

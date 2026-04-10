@@ -167,7 +167,6 @@
   padding-left: 42px;
 }
 
-.input-icon input:focus + .icon,
 .input-icon:focus-within .icon {
   color: var(--primary);
 }
@@ -199,7 +198,7 @@
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .auth-branding {
     display: none;
   }
