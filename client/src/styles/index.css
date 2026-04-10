@@ -104,12 +104,11 @@ body::before {
   inset: 0;
   background: var(--mesh-1), var(--mesh-2), var(--mesh-3);
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
 #root {
   position: relative;
-  z-index: 1;
   overflow-x: hidden;
 }
 

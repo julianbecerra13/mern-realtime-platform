@@ -2,7 +2,6 @@
   min-height: 100vh;
   display: flex;
   position: relative;
-  overflow: hidden;
 }
 
 /* Left panel - branding */
@@ -70,9 +69,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
   flex-shrink: 0;
   backdrop-filter: blur(10px);
+}
+
+.auth-feature-icon svg {
+  width: 20px;
+  height: 20px;
 }
 
 .floating-shapes {
@@ -120,16 +123,21 @@
   justify-content: center;
   padding: 40px;
   background: var(--bg-primary);
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
 }
 
 .auth-card {
   width: 100%;
   max-width: 420px;
   animation: fadeInUp 0.6s ease-out;
-  background: transparent;
+  /* Reset any inherited .card styles */
+  background: none;
   border: none;
   box-shadow: none;
   backdrop-filter: none;
+  padding: 0;
 }
 
 .auth-header {
@@ -149,11 +157,14 @@
   font-size: 15px;
 }
 
-.input-icon {
+/* Input with icon */
+.auth-card .input-icon {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.input-icon .icon {
+.auth-card .input-icon .icon {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -161,13 +172,16 @@
   color: var(--text-tertiary);
   pointer-events: none;
   transition: var(--transition-fast);
+  width: 16px;
+  height: 16px;
 }
 
-.input-icon input {
+.auth-card .input-icon input {
   padding-left: 42px;
+  width: 100%;
 }
 
-.input-icon:focus-within .icon {
+.auth-card .input-icon:focus-within .icon {
   color: var(--primary);
 }
 
@@ -205,5 +219,10 @@
 
   .auth-form-panel {
     flex: 1;
+    padding: 24px;
+  }
+
+  .auth-header h1 {
+    font-size: 24px;
   }
 }
