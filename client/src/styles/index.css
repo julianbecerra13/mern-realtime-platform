@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 *,
 *::before,
 *::after {
@@ -9,31 +11,110 @@
 :root {
   --primary: #6366f1;
   --primary-hover: #4f46e5;
-  --primary-light: #e0e7ff;
-  --bg: #f8fafc;
-  --bg-card: #ffffff;
-  --text: #1e293b;
-  --text-secondary: #64748b;
-  --border: #e2e8f0;
+  --primary-light: rgba(99, 102, 241, 0.15);
+  --primary-glow: rgba(99, 102, 241, 0.4);
+  --accent: #06b6d4;
+  --accent-light: rgba(6, 182, 212, 0.15);
   --success: #10b981;
+  --success-light: rgba(16, 185, 129, 0.15);
   --warning: #f59e0b;
+  --warning-light: rgba(245, 158, 11, 0.15);
   --error: #ef4444;
+  --error-light: rgba(239, 68, 68, 0.15);
   --info: #3b82f6;
-  --radius: 8px;
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --info-light: rgba(59, 130, 246, 0.15);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg-input: rgba(255, 255, 255, 0.05);
+  --bg-input-focus: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --border-focus: rgba(99, 102, 241, 0.5);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.15);
+  --gradient-bg: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #0d0d15 100%);
+  --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  --gradient-accent: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  --mesh-1: radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+  --mesh-2: radial-gradient(at 80% 20%, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
+  --mesh-3: radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --bg-glass: rgba(255, 255, 255, 0.6);
+  --bg-input: rgba(0, 0, 0, 0.03);
+  --bg-input-focus: rgba(0, 0, 0, 0.05);
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.15);
+  --border-focus: rgba(99, 102, 241, 0.5);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.08);
+  --gradient-bg: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #f0f9ff 100%);
+  --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+  --gradient-accent: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  --mesh-1: radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 50%);
+  --mesh-2: radial-gradient(at 80% 20%, rgba(6, 182, 212, 0.04) 0%, transparent 50%);
+  --mesh-3: radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  font-family: var(--font);
+  background: var(--gradient-bg);
+  color: var(--text-primary);
   line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--mesh-1), var(--mesh-2), var(--mesh-3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 a {
   color: var(--primary);
   text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-hover);
 }
 
 button {
@@ -45,37 +126,58 @@ button {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
+
+/* ===== BUTTONS ===== */
 
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.2s;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+
+.btn:hover::after {
+  opacity: 1;
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: var(--gradient-accent);
   color: white;
+  box-shadow: 0 2px 12px var(--primary-glow);
 }
 
 .btn-primary:hover {
-  background: var(--primary-hover);
+  box-shadow: 0 4px 20px var(--primary-glow);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background: var(--bg);
-  color: var(--text);
+  background: var(--bg-card);
+  color: var(--text-primary);
   border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: var(--border);
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
 }
 
 .btn-danger {
@@ -83,84 +185,96 @@ button {
   color: white;
 }
 
-.btn-danger:hover {
-  background: #dc2626;
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 8px 12px;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
 }
 
 .btn-google {
-  background: white;
-  color: #333;
+  background: var(--bg-card);
+  color: var(--text-primary);
   border: 1px solid var(--border);
   width: 100%;
   justify-content: center;
   padding: 12px;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
 }
 
 .btn-google:hover {
-  background: #f1f5f9;
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
 }
+
+/* ===== CARDS ===== */
 
 .card {
-  background: var(--bg-card);
-  border-radius: var(--radius);
+  background: var(--gradient-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  backdrop-filter: blur(20px);
   box-shadow: var(--shadow);
-  padding: 24px;
+  transition: var(--transition);
 }
 
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===== FORMS ===== */
+
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  margin-bottom: 6px;
-  color: var(--text);
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .form-group input {
   width: 100%;
-  padding: 10px 14px;
+  padding: 12px 16px;
+  background: var(--bg-input);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   font-size: 14px;
-  transition: border-color 0.2s;
+  color: var(--text-primary);
+  transition: var(--transition);
   font-family: inherit;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: var(--primary);
+  border-color: var(--border-focus);
+  background: var(--bg-input-focus);
   box-shadow: 0 0 0 3px var(--primary-light);
 }
 
-.error-text {
-  color: var(--error);
-  font-size: 13px;
-  margin-top: 4px;
+.form-group input::placeholder {
+  color: var(--text-tertiary);
 }
 
-.divider {
-  display: flex;
-  align-items: center;
-  margin: 20px 0;
-  gap: 12px;
+.form-group input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
-.divider span {
-  color: var(--text-secondary);
-  font-size: 13px;
-}
+/* ===== BADGE ===== */
 
 .badge {
   display: inline-flex;
@@ -173,8 +287,41 @@ button {
   background: var(--error);
   color: white;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 2px 8px var(--error-light);
+  animation: badgePulse 2s ease-in-out infinite;
 }
+
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3); }
+  50% { box-shadow: 0 2px 16px rgba(239, 68, 68, 0.5); }
+}
+
+/* ===== DIVIDER ===== */
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+  gap: 16px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.divider span {
+  color: var(--text-tertiary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== SPINNER ===== */
 
 .spinner {
   width: 40px;
@@ -194,4 +341,94 @@ button {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background: var(--gradient-bg);
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
 }
