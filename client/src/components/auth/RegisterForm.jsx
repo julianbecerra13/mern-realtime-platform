@@ -40,10 +40,11 @@ const RegisterForm = () => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL || '/api';
       const res = await fetch(`${apiUrl}/health`);
-      if (res.ok) {
+      const contentType = res.headers.get('content-type');
+      if (res.ok && contentType?.includes('application/json')) {
         window.location.href = `${apiUrl}/auth/google`;
       } else {
-        toast.error('Server is not available');
+        toast.error('Backend server is not running');
       }
     } catch {
       toast.error('Cannot connect to server');
