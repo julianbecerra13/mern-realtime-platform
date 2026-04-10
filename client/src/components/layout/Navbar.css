@@ -287,4 +287,9 @@
   .connection-indicator {
     display: none;
   }
+
+  .dropdown-menu {
+    right: -8px;
+    min-width: 220px;
+  }
 }

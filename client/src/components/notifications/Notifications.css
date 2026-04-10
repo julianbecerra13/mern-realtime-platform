@@ -50,6 +50,7 @@
   backdrop-filter: blur(20px);
   transition: var(--transition);
   opacity: 0;
+  overflow: hidden;
 }
 
 .notif-item:hover {
@@ -99,6 +100,8 @@
   color: var(--text-tertiary);
   margin-bottom: 8px;
   line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .notif-meta {

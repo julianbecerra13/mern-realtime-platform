@@ -103,6 +103,8 @@
   transition: var(--transition);
   opacity: 0;
   animation: fadeInUp 0.5s ease-out forwards;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .stat-card:hover {
@@ -204,6 +206,8 @@
   backdrop-filter: blur(20px);
   opacity: 0;
   animation: fadeInUp 0.5s ease-out forwards;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .section-header {
