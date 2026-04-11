@@ -191,6 +191,32 @@
 .stat-bar-fill.cyan { background: var(--accent); }
 .stat-bar-fill.gray { background: var(--text-tertiary); }
 
+/* Task Summary */
+.task-summary {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 14px 20px;
+  background: var(--gradient-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+}
+
+.task-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.ts-pending { color: var(--text-tertiary); }
+.ts-progress { color: var(--warning); }
+.ts-done { color: var(--success); }
+
 /* Bottom Grid */
 .dash-grid {
   display: grid;

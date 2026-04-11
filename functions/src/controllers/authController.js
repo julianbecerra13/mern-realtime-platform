@@ -1,6 +1,43 @@
 const User = require('../models/User');
+const Notification = require('../models/Notification');
 const jwt = require('jsonwebtoken');
 const { generateAccessToken, generateRefreshToken, setRefreshTokenCookie } = require('../utils/tokens');
+
+const seedWelcomeNotifications = async (userId) => {
+  const notifications = [
+    {
+      recipient: userId,
+      type: 'success',
+      title: 'Welcome to Nexus!',
+      message: 'Your account has been created successfully. Explore the platform and start collaborating.',
+    },
+    {
+      recipient: userId,
+      type: 'info',
+      title: 'Complete your profile',
+      message: 'Head over to Profile Settings to add your name and set up a password.',
+    },
+    {
+      recipient: userId,
+      type: 'system',
+      title: 'Real-time notifications active',
+      message: 'You will receive instant alerts when something important happens. Try sending one to another user!',
+    },
+    {
+      recipient: userId,
+      type: 'info',
+      title: 'Explore the Users directory',
+      message: 'Check out the Users page to see who else is on the platform and send them notifications.',
+    },
+    {
+      recipient: userId,
+      type: 'success',
+      title: 'Create your first task',
+      message: 'Use the Tasks page to organize your work. Create, track, and complete tasks with ease.',
+    },
+  ];
+  await Notification.insertMany(notifications);
+};
 
 const register = async (req, res, next) => {
   try {
@@ -21,6 +58,8 @@ const register = async (req, res, next) => {
 
     user.refreshTokens.push(refreshToken);
     await user.save();
+
+    await seedWelcomeNotifications(user._id);
 
     setRefreshTokenCookie(res, refreshToken);
 

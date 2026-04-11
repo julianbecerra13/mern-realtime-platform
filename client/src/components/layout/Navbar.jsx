@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiBell, FiLogOut, FiUser, FiSun, FiMoon, FiHome, FiMenu, FiX } from 'react-icons/fi';
+import { FiBell, FiLogOut, FiUser, FiSun, FiMoon, FiHome, FiMenu, FiX, FiUsers, FiClipboard } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
 import { useSocket } from '../../context/SocketContext';
@@ -54,6 +54,14 @@ const Navbar = () => {
               <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
                 <FiHome size={18} />
                 <span>Dashboard</span>
+              </Link>
+              <Link to="/tasks" className={`nav-link ${isActive('/tasks') ? 'active' : ''}`}>
+                <FiClipboard size={18} />
+                <span>Tasks</span>
+              </Link>
+              <Link to="/users" className={`nav-link ${isActive('/users') ? 'active' : ''}`}>
+                <FiUsers size={18} />
+                <span>Users</span>
               </Link>
               <Link to="/notifications" className={`nav-link ${isActive('/notifications') ? 'active' : ''}`}>
                 <FiBell size={18} />

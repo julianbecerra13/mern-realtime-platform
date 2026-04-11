@@ -23,7 +23,6 @@ router.delete('/:id', deleteNotification);
 
 router.post(
   '/',
-  authorize('admin'),
   validate([
     body('recipient').isMongoId().withMessage('Valid recipient ID is required'),
     body('title').trim().notEmpty().withMessage('Title is required'),

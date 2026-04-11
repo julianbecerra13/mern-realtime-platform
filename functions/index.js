@@ -18,6 +18,8 @@ const errorHandler = require('./src/middleware/errorHandler');
 const authRoutes = require('./src/routes/auth');
 const userRoutes = require('./src/routes/users');
 const notificationRoutes = require('./src/routes/notifications');
+const taskRoutes = require('./src/routes/tasks');
+const statsRoutes = require('./src/routes/stats');
 
 const app = express();
 
@@ -60,6 +62,8 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/stats', statsRoutes);
 
 app.use(errorHandler);
 

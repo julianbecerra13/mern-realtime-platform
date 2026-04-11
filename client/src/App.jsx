@@ -9,6 +9,8 @@ import AuthCallback from './components/auth/AuthCallback';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Users from './pages/Users';
+import Tasks from './pages/Tasks';
 import NotificationPanel from './components/notifications/NotificationPanel';
 
 const App = () => {
@@ -57,6 +59,22 @@ const App = () => {
           element={
             <ProtectedRoute>
               <NotificationPanel />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tasks"
+          element={
+            <ProtectedRoute>
+              <Tasks />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <ProtectedRoute>
+              <Users />
             </ProtectedRoute>
           }
         />
