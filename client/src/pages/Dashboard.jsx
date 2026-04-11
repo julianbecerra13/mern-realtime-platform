@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNotifications } from '../context/NotificationContext';
 import { useSocket } from '../context/SocketContext';
+import useCountUp from '../hooks/useCountUp';
 import api from '../services/api';
 import {
   FiBell, FiActivity, FiZap, FiUsers, FiArrowUpRight,
@@ -45,6 +46,11 @@ const Dashboard = () => {
   const taskCompleted = stats?.tasks?.completed || 0;
   const taskProgress = taskTotal > 0 ? Math.round((taskCompleted / taskTotal) * 100) : 0;
 
+  const animUnread = useCountUp(unreadCount);
+  const animUsers = useCountUp(stats?.users || 0);
+  const animTasks = useCountUp(taskTotal);
+  const animProgress = useCountUp(taskProgress);
+
   return (
     <div className="dashboard">
       <div className="container">
@@ -67,7 +73,7 @@ const Dashboard = () => {
               <div className="stat-icon-wrap purple"><FiBell size={20} /></div>
               <Link to="/notifications" className="stat-trend"><FiArrowUpRight size={16} /></Link>
             </div>
-            <div className="stat-value">{unreadCount}</div>
+            <div className="stat-value">{animUnread}</div>
             <div className="stat-label">Unread Notifications</div>
             <div className="stat-bar">
               <div className="stat-bar-fill purple" style={{ width: `${Math.min(unreadCount * 10, 100)}%` }} />
@@ -79,7 +85,7 @@ const Dashboard = () => {
               <div className="stat-icon-wrap blue"><FiUsers size={20} /></div>
               <Link to="/users" className="stat-trend"><FiArrowUpRight size={16} /></Link>
             </div>
-            <div className="stat-value">{stats?.users || 0}</div>
+            <div className="stat-value">{animUsers}</div>
             <div className="stat-label">Total Users</div>
             <div className="stat-bar">
               <div className="stat-bar-fill blue" style={{ width: `${Math.min((stats?.users || 0) * 20, 100)}%` }} />
@@ -91,8 +97,8 @@ const Dashboard = () => {
               <div className="stat-icon-wrap cyan"><FiClipboard size={20} /></div>
               <Link to="/tasks" className="stat-trend"><FiArrowUpRight size={16} /></Link>
             </div>
-            <div className="stat-value">{taskTotal}</div>
-            <div className="stat-label">Total Tasks ({taskProgress}% done)</div>
+            <div className="stat-value">{animTasks}</div>
+            <div className="stat-label">Total Tasks ({animProgress}% done)</div>
             <div className="stat-bar">
               <div className="stat-bar-fill cyan" style={{ width: `${taskProgress}%` }} />
             </div>

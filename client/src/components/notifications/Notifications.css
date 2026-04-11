@@ -56,6 +56,8 @@
 .notif-item:hover {
   border-color: var(--border-hover);
   background: var(--bg-card-hover);
+  transform: translateX(4px);
+  box-shadow: var(--shadow);
 }
 
 .notif-item.unread {

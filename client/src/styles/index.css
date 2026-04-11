@@ -105,6 +105,13 @@ body::before {
   background: var(--mesh-1), var(--mesh-2), var(--mesh-3);
   pointer-events: none;
   z-index: -1;
+  animation: meshFloat 20s ease-in-out infinite alternate;
+}
+
+@keyframes meshFloat {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(15deg); }
+  100% { filter: hue-rotate(0deg); }
 }
 
 #root {
@@ -164,13 +171,26 @@ button {
 
 .btn-primary {
   background: var(--gradient-accent);
+  background-size: 200% auto;
   color: white;
   box-shadow: 0 2px 12px var(--primary-glow);
+  animation: gradientShift 3s ease infinite;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 4px 20px var(--primary-glow);
-  transform: translateY(-1px);
+  box-shadow: 0 4px 24px var(--primary-glow), 0 0 40px rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  transition: transform 0.1s;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 .btn-secondary {
@@ -229,10 +249,27 @@ button {
   backdrop-filter: blur(20px);
   box-shadow: var(--shadow);
   transition: var(--transition);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: var(--gradient-accent);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s;
+  filter: blur(12px);
 }
 
 .card:hover {
   box-shadow: var(--shadow-lg);
+}
+
+.card:hover::before {
+  opacity: 0.12;
 }
 
 /* ===== FORMS ===== */
@@ -397,6 +434,33 @@ button {
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.25); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes textShine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .animate-fade-up {

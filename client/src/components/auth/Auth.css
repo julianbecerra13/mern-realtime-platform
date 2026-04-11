@@ -89,6 +89,8 @@
   position: absolute;
   border-radius: 50%;
   background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 .floating-shape:nth-child(1) {
@@ -131,7 +133,7 @@
 .auth-card {
   width: 100%;
   max-width: 420px;
-  animation: fadeInUp 0.6s ease-out;
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   /* Reset any inherited .card styles */
   background: none;
   border: none;
