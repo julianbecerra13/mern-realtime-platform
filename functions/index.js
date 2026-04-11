@@ -63,4 +63,4 @@ app.use('/api/notifications', notificationRoutes);
 
 app.use(errorHandler);
 
-exports.api = onRequest({ region: 'us-central1', memory: '256MiB' }, app);
+exports.api = onRequest({ region: 'us-central1', memory: '256MiB', invoker: 'public' }, app);
