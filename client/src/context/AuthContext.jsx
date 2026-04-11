@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
       setUser(data.data);
     } catch {
       localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
       setUser(null);
     } finally {
       setLoading(false);
@@ -37,6 +38,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     const { data } = await api.post('/auth/login', { email, password });
     localStorage.setItem('accessToken', data.data.accessToken);
+    localStorage.setItem('refreshToken', data.data.refreshToken);
     setUser(data.data.user);
     return data;
   };
@@ -44,15 +46,18 @@ export const AuthProvider = ({ children }) => {
   const register = async (name, email, password) => {
     const { data } = await api.post('/auth/register', { name, email, password });
     localStorage.setItem('accessToken', data.data.accessToken);
+    localStorage.setItem('refreshToken', data.data.refreshToken);
     setUser(data.data.user);
     return data;
   };
 
   const logout = async () => {
     try {
-      await api.post('/auth/logout');
+      const refreshToken = localStorage.getItem('refreshToken');
+      await api.post('/auth/logout', { refreshToken });
     } finally {
       localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
       setUser(null);
     }
   };

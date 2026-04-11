@@ -9,8 +9,10 @@ const AuthCallback = () => {
 
   useEffect(() => {
     const token = searchParams.get('token');
+    const refresh = searchParams.get('refresh');
     if (token) {
       localStorage.setItem('accessToken', token);
+      if (refresh) localStorage.setItem('refreshToken', refresh);
       fetchUser().then(() => navigate('/'));
     } else {
       navigate('/login');
