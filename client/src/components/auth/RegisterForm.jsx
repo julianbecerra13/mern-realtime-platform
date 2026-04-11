@@ -36,19 +36,8 @@ const RegisterForm = () => {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    try {
-      const apiUrl = import.meta.env.VITE_API_URL || '/api';
-      const res = await fetch(`${apiUrl}/health`);
-      const contentType = res.headers.get('content-type');
-      if (res.ok && contentType?.includes('application/json')) {
-        window.location.href = `${apiUrl}/auth/google`;
-      } else {
-        toast.error('Backend server is not running');
-      }
-    } catch {
-      toast.error('Cannot connect to server');
-    }
+  const handleGoogleLogin = () => {
+    window.location.href = '/api/auth/google';
   };
 
   return (
